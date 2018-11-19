@@ -47,12 +47,12 @@ screenWidth = 1400 #930
 screenHeight = 900 #640
 
 # world dimensions (ie. nb of cells in total)
-worldWidth = 64
-worldHeight = 64
+worldWidth = 128
+worldHeight = 128
 
 # set surface of displayed tiles (ie. nb of cells that are rendered) -- must be superior to worldWidth and worldHeight
-viewWidth = 48 #32
-viewHeight = 48 #32
+viewWidth = 96 #32
+viewHeight = 96 #32
 
 scaleMultiplier = 0.25 # re-scaling of loaded images
 
@@ -101,9 +101,9 @@ def loadImage(filename):
 
 tileType = [
     loadImage('assets/basic111x128/platformerTile_48_ret.png'), # grass
-    loadImage('assets/isometric-blocks/PNG/Platformer tiles/platformerTile_33.png'), # brick
-    loadImage('assets/isometric-blocks/PNG/Abstract tiles/abstractTile_12.png'), # blue grass (?)
-    loadImage('assets/isometric-blocks/PNG/Abstract tiles/abstractTile_09.png'), # grey brock
+    loadImage('assets/ext/isometric-blocks/PNG/Platformer tiles/platformerTile_33.png'), # brick
+    loadImage('assets/ext/isometric-blocks/PNG/Abstract tiles/abstractTile_12.png'), # blue grass (?)
+    loadImage('assets/ext/isometric-blocks/PNG/Abstract tiles/abstractTile_09.png'), # grey brock
 ]
 
 objectType = [

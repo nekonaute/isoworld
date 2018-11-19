@@ -49,10 +49,10 @@ def loadImage(filename):
     return image
 
 tileType = [
-    loadImage('assets/isometric-blocks/PNG/Platformer tiles/platformerTile_48.png'), # grass
-    loadImage('assets/isometric-blocks/PNG/Platformer tiles/platformerTile_33.png'), # brick
-    loadImage('assets/isometric-blocks/PNG/Abstract tiles/abstractTile_12.png'), # blue grass (?)
-    loadImage('assets/isometric-blocks/PNG/Abstract tiles/abstractTile_09.png') # grey brock
+    loadImage('assets/ext/isometric-blocks/PNG/Platformer tiles/platformerTile_48.png'), # grass
+    loadImage('assets/ext/isometric-blocks/PNG/Platformer tiles/platformerTile_33.png'), # brick
+    loadImage('assets/ext/isometric-blocks/PNG/Abstract tiles/abstractTile_12.png'), # blue grass (?)
+    loadImage('assets/ext/isometric-blocks/PNG/Abstract tiles/abstractTile_09.png') # grey brock
 ]
 
 # re-scale reference image size -- must be done *after* loading sprites
