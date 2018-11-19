@@ -30,3 +30,8 @@ Method:
 
 Data:
 * Macbook pro, Early 2015, 3.1ghz Intel Core i7, 16 GB RAM, Intel Iris Graphics 6100: 10.272582194960501 fps (2018-11-19)
+
+Snapshot
+========
+
+![Wofi screenshot](https://github.com/nekonaute/isoworld/blob/master/data/snapshot.png)
