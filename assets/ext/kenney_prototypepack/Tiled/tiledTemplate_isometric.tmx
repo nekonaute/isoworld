@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="isometric" renderorder="right-down" width="10" height="10" tilewidth="256" tileheight="149" backgroundcolor="#323232" nextobjectid="1">
+ <tileset firstgid="1" name="Sample" tilewidth="256" tileheight="512">
+  <tile id="0">
+   <image width="256" height="512" source="../Isometric/floor_E.png"/>
+  </tile>
+  <tile id="1">
+   <image width="256" height="512" source="../Isometric/button_E.png"/>
+  </tile>
+  <tile id="2">
+   <image width="256" height="512" source="../Isometric/wallCorner_N.png"/>
+  </tile>
+  <tile id="3">
+   <image width="256" height="512" source="../Isometric/wallStraight_N.png"/>
+  </tile>
+  <tile id="4">
+   <image width="256" height="512" source="../Isometric/wallStraight_W.png"/>
+  </tile>
+  <tile id="5">
+   <image width="256" height="512" source="../Isometric/columnBlocks_E.png"/>
+  </tile>
+  <tile id="6">
+   <image width="256" height="512" source="../Isometric/floorGrass_E.png"/>
+  </tile>
+  <tile id="7">
+   <image width="256" height="512" source="../Isometric/ladder_N.png"/>
+  </tile>
+  <tile id="8">
+   <image width="256" height="512" source="../Isometric/wallDoorClosed_W.png"/>
+  </tile>
+  <tile id="9">
+   <image width="256" height="512" source="../Isometric/wallHalfCastle_N.png"/>
+  </tile>
+  <tile id="10">
+   <image width="256" height="512" source="../Isometric/stepsSmall_N.png"/>
+  </tile>
+  <tile id="11">
+   <image width="256" height="512" source="../Isometric/stepsSmallSlabsCornerOuter_N.png"/>
+  </tile>
+  <tile id="12">
+   <image width="256" height="512" source="../Isometric/stepsSmall_W.png"/>
+  </tile>
+  <tile id="13">
+   <image width="256" height="512" source="../Isometric/blockHuge_E.png"/>
+  </tile>
+  <tile id="14">
+   <image width="256" height="512" source="../Isometric/wallHalfCastle_E.png"/>
+  </tile>
+  <tile id="15">
+   <image width="256" height="512" source="../Isometric/wallSwitchOff_W.png"/>
+  </tile>
+  <tile id="16">
+   <image width="256" height="512" source="../Isometric/blockLarge_E.png"/>
+  </tile>
+  <tile id="17">
+   <image width="256" height="512" source="../Isometric/blockSmall_E.png"/>
+  </tile>
+  <tile id="18">
+   <image width="256" height="512" source="../Isometric/wallWindowLeft_W.png"/>
+  </tile>
+  <tile id="19">
+   <image width="256" height="512" source="../Isometric/wallWindowMiddle_W.png"/>
+  </tile>
+  <tile id="20">
+   <image width="256" height="512" source="../Isometric/wallWindowRight_W.png"/>
+  </tile>
+  <tile id="21">
+   <image width="256" height="512" source="../Isometric/floorQuarter_N.png"/>
+  </tile>
+  <tile id="22">
+   <image width="256" height="512" source="../Isometric/floorQuarter_W.png"/>
+  </tile>
+  <tile id="23">
+   <image width="256" height="512" source="../Isometric/floorHalf_E.png"/>
+  </tile>
+  <tile id="24">
+   <image width="256" height="512" source="../Isometric/floorHalf_W.png"/>
+  </tile>
+  <tile id="25">
+   <image width="256" height="512" source="../Isometric/floorHalf_N.png"/>
+  </tile>
+  <tile id="26">
+   <image width="256" height="512" source="../Isometric/floorQuarter_E.png"/>
+  </tile>
+ </tileset>
+ <layer name="Floor" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAAMSjNiITxAWqpY8SC8cmBMDsW88RJcJc4FnViuJXTDQAAbmAAfQ==
+  </data>
+ </layer>
+ <layer name="Wall" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYMAEvFCaH4scCPARoY6PBHXMQMwNxDwE7OVE4+NSx4pDHBfgI6yEbgAA/LwA4Q==
+  </data>
+ </layer>
+ <layer name="Buttons" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAPEMQjx0aiWUwE5AWINEeIRHvpAQAzYAA8
+  </data>
+ </layer>
+ <layer name="Second floor" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAACSCWZMANGIFYlEh1IkAsDcRiRKgjBEDqhIlQNxwAACirAOg=
+  </data>
+ </layer>
+ <layer name="Objects" width="10" height="10">
+  <data encoding="base64" compression="zlib">
+   eJxjYEAFQgzEAUEi1Y0C0gAAM2gAJA==
+  </data>
+ </layer>
+</map>
