@@ -51,8 +51,8 @@ worldWidth = 128
 worldHeight = 128
 
 # set surface of displayed tiles (ie. nb of cells that are rendered) -- must be superior to worldWidth and worldHeight
-viewWidth = 96 #32
-viewHeight = 96 #32
+viewWidth = 64 #32
+viewHeight = 64 #32
 
 scaleMultiplier = 0.25 # re-scaling of loaded images
 
