@@ -32,3 +32,5 @@ Method:
 
 Data:
 * Macbook pro, Early 2015, 3.1ghz Intel Core i7, 16 GB RAM, Intel Iris Graphics 6100: 10.272582194960501 fps (2018-11-19)
+
+**Hint: an efficient and quite easy way to optimise running speed is to redraw only cells that have changed inbetween updates, rather than the whole world (which is the current method)**
