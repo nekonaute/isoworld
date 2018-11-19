@@ -25,6 +25,8 @@ Benchmarking
 ============
 
 Method:
-(1) python3 demo_20181119_12h45.py
-(2) wait for 3 FPS update, then copy-paste final fps count (last line, starting with "[Quit]")
-* Early 2015, 3.1ghz Intel Core i7, 16 GB RAM, Intel Iris Graphics 6100: 10.272582194960501
+* (1) python3 demo_20181119_12h45.py
+* (2) wait for 3 FPS update, then copy-paste final line with fps count
+
+Data:
+* Early 2015, 3.1ghz Intel Core i7, 16 GB RAM, Intel Iris Graphics 6100: 10.272582194960501 fps (2018-11-19)
