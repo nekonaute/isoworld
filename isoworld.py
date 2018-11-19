@@ -4,8 +4,10 @@
 #
 # Started: 2018-11-17
 # purpose: basic code developped for teaching artificial life and ecological simulation at Sorbonne Univ. (SU)
-# couse: L2, 2i013 Projet, "Vie Artificielle"
+# course: L2, 2i013 Projet, "Vie Artificielle"
 # licence: CC-BY-SA
+#
+# Requirements: Python3, Pygame
 #
 # Credits for third party resources used in this project:
 # - Assets: https://www.kenney.nl/ (great assets by Kenney Vleugels with *public domain license*)
