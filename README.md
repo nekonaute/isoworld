@@ -31,6 +31,7 @@ Method:
 * (2) wait for at least 3 FPS updates (see console), exit (press ESC in window), then record final line with fps count (line starts with "[Quit]")
 
 Data:
-* Macbook pro, Early 2015, 3.1ghz Intel Core i7, 16 GB RAM, Intel Iris Graphics 6100: 10.272582194960501 fps (2018-11-19)
+* Macbook pro, Early 2015, 3.1ghz Intel Core i7, 16 GB RAM, Intel Iris Graphics 6100: 10.272582194960501 fps (2018-11-19, Nicolas)
+* Ubuntu 18.04, Intel Xeon(R) CPU E5-2609 v4 @ 1.70GHz x 16, 32 Go, Quadro K420/PCIe/SSE2: 18.57459813310919 fps (2018-11-19, Paul)
 
 *Hint: an efficient and quite easy way to optimise running speed is to redraw only cells that have changed inbetween updates, rather than the whole world (which is the current method).*

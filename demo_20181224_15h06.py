@@ -29,7 +29,7 @@
 #
 # TODO list
 # - double buffer
-# -.multiple agents
+# - multiple agents
 
 
 import sys
@@ -43,27 +43,17 @@ from pygame.locals import *
 
 ###
 
-versionTag = "2018-12-24_15h06"
+versionTag = "2018-11-18_23h24"
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-###
-### PARAMETERS: simulation
-###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
-# all values are for initialisation. May change during runtime.
-nbTrees = 35 #350
+nbTrees = 350 #350
 nbBurningTrees = 1 #15
-nbAgents = 10
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-###
-### PARAMETERS: rendering
-###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 # display screen dimensions
@@ -71,8 +61,8 @@ screenWidth = 930 # 1400
 screenHeight = 640 #900
 
 # world dimensions (ie. nb of cells in total)
-worldWidth = 32#64
-worldHeight = 32#64
+worldWidth = 64
+worldHeight = 64
 
 # set surface of displayed tiles (ie. nb of cells that are rendered) -- must be superior to worldWidth and worldHeight
 viewWidth = 32 #32
@@ -96,23 +86,20 @@ verboseFps = True # display FPS every once in a while
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-###
-### setting up Pygame/SDL
-###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+
 
 pygame.init()
+
 #pygame.key.set_repeat(5,5)
+
 fpsClock = pygame.time.Clock()
+
 screen = pygame.display.set_mode((screenWidth, screenHeight), DOUBLEBUF)
+
 pygame.display.set_caption('World of Isotiles')
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-###
-### CORE/USER: Image management
-###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 def loadImage(filename):
@@ -154,10 +141,6 @@ def resetImages():
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-###
-### CORE: objects parameters
-###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 # spritesheet-specific -- as stored on the disk ==> !!! here, assume 128x111 with 64 pixels upper-surface !!!
@@ -202,9 +185,6 @@ yScreenOffset = 3*tileTotalHeight # border. Could be 0.
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### CORE: get/set methods
-###
-###
 
 def displayWelcomeMessage():
 
@@ -286,9 +266,6 @@ def setAgentAt(x,y,type):
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### CORE: rendering
-###
-###
 
 def render( it = 0 ):
     global xViewOffset, yViewOffset
@@ -330,77 +307,13 @@ def render( it = 0 ):
 
     return
 
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### Agents
-###
-###
-
-class BasicAgent:
-
-    def __init__(self,imageId):
-        self.type = imageId
-        self.reset()
-        return
-
-    def reset(self):
-        self.x = randint(0,getWorldWidth()-1)
-        self.y = randint(0,getWorldWidth()-1)
-        while getTerrainAt(self.x,self.y) != 0 or getObjectAt(self.x,self.y) != 0 or getAgentAt(self.x,self.y) != 0:
-            self.x = randint(0,getWorldWidth()-1)
-            self.y = randint(0,getWorldHeight()-1)
-        setAgentAt(self.x,self.y,self.type)
-        return
-
-    def getPosition(self):
-        return (self.x,self.y)
-
-    def move(self):
-        xNew = self.x
-        yNew = self.y
-        if random() < 0.5:
-            xNew = ( self.x + [-1,+1][randint(0,1)] + getWorldWidth() ) % getWorldWidth()
-        else:
-            yNew = ( self.y + [-1,+1][randint(0,1)] + getWorldHeight() ) % getWorldHeight()
-        if getObjectAt(xNew,yNew) == 0: # dont move if collide with object (note that negative values means cell cannot be walked on)
-            setAgentAt(self.x,self.y,noAgentId)
-            self.x = xNew
-            self.y = yNew
-            setAgentAt(self.x,self.y,self.type)
-        if verbose == True:
-            print ("agent of type ",str(self.type),"located at (",self.x,",",self.y,")")
-        return
-
-    def move2(self,xNew,yNew):
-        success = False
-        if getObjectAt( (self.x+xNew+worldWidth)%worldWidth , (self.y+yNew+worldHeight)%worldHeight ) == 0: # dont move if collide with object (note that negative values means cell cannot be walked on)
-            setAgentAt( self.x, self.y, noAgentId)
-            self.x = ( self.x + xNew + worldWidth ) % worldWidth
-            self.y = ( self.y + yNew + worldHeight ) % worldHeight
-            setAgentAt( self.x, self.y, self.type)
-            success = True
-        if verbose == True:
-            if success == False:
-                print ("agent of type ",str(self.type)," cannot move.")
-            else:
-                print ("agent of type ",str(self.type)," moved to (",self.x,",",self.y,")")
-        return
-
-    def getType(self):
-        return self.type
-
-agents = []
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### Initialise world
-###
-###
 
 def initWorld():
-    global nbTrees, nbBurningTrees, agents
+    global xAgent, yAgent, nbTrees, nbBurningTrees
 
     # add a pyramid-shape building
     building1TerrainMap = [
@@ -464,8 +377,11 @@ def initWorld():
         setObjectAt(20,3+i,blockId,objectMapLevels-1)
         setObjectAt(30,3+i,blockId,objectMapLevels-1)
 
-    for i in range(nbAgents):
-        agents.append(BasicAgent(ghostId))
+    xAgent = yAgent = 0
+    while getTerrainAt(xAgent,yAgent) != 0:
+        xAgent = randint(0,getWorldWidth()-1)
+        yAgent = randint(0,getWorldHeight()-1)
+    setAgentAt(xAgent,yAgent,ghostId)
 
     for i in range(nbTrees):
         x = randint(0,getWorldWidth()-1)
@@ -507,20 +423,29 @@ def stepWorld( it = 0 ):
 ### ### ### ### ###
 
 def stepAgents( it = 0 ):
+    global xAgent, yAgent
+
     # move agent
     if it % (maxFps/10) == 0:
-        shuffle(agents)
-        for a in agents:   # shuffle agents in in-place (i.e. agents is modified)
-            a.move()
+        xAgentNew = xAgent
+        yAgentNew = yAgent
+        if random() < 0.5:
+            xAgentNew = ( xAgent + [-1,+1][randint(0,1)] + getWorldWidth() ) % getWorldWidth()
+        else:
+            yAgentNew = ( yAgent + [-1,+1][randint(0,1)] + getWorldHeight() ) % getWorldHeight()
+        if getObjectAt(xAgentNew,yAgentNew) == 0: # dont move if collide with object (note that negative values means cell cannot be walked on)
+            setAgentAt(xAgent,yAgent,noAgentId)
+            xAgent = xAgentNew
+            yAgent = yAgentNew
+            setAgentAt(xAgent,yAgent,ghostId)
+        if verbose == True:
+            print (it,": agent(",xAgent,",",yAgent,")")
     return
 
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### MAIN
-###
-###
 
 timestamp = datetime.datetime.now().timestamp()
 
@@ -530,8 +455,6 @@ displayWelcomeMessage()
 
 initWorld()
 initAgents()
-
-player = BasicAgent(invaderId)
 
 print ("initWorld:",datetime.datetime.now().timestamp()-timestamp,"second(s)")
 timeStampStart = timeStamp = datetime.datetime.now().timestamp()
@@ -552,35 +475,7 @@ while userExit == False:
     render(it)
 
     stepWorld(it)
-
-    perdu = False
-    for a in agents:
-        if a.getPosition() == player.getPosition():
-            perdu = True
-            break
-
     stepAgents(it)
-
-    for a in agents:
-        if a.getPosition() == player.getPosition():
-            perdu = True
-            break
-
-    if perdu == True:
-        print ("")
-        print ("#### #### #### #### ####")
-        print ("####                ####")
-        print ("####     PERDU !    ####")
-        print ("####                ####")
-        print ("#### #### #### #### ####")
-        print ("")
-        print (">>> Score:",it,"--> BRAVO! ")
-        print ("")
-        pygame.quit()
-        sys.exit()
-
-    if it % 10 == 0:
-        agents.append(BasicAgent(ghostId))
 
     # continuous stroke
     keys = pygame.key.get_pressed()
@@ -609,14 +504,6 @@ while userExit == False:
         if event.type == KEYUP:
             if event.key == K_ESCAPE:
                 userExit = True
-            elif event.key == pygame.K_j:
-                player.move2(0,+1);
-            elif event.key == pygame.K_u:
-                player.move2(0,-1);
-            elif event.key == pygame.K_k:
-                player.move2(+1,0);
-            elif event.key == pygame.K_h:
-                player.move2(-1,0);
             elif event.key == pygame.K_n and pygame.key.get_mods() & pygame.KMOD_SHIFT:
                 addNoise = not(addNoise)
                 print ("noise is",addNoise) # easter-egg
